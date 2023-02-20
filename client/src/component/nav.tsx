@@ -44,11 +44,7 @@ const Nav: React.FC = () => {
       >
         Misdemeanour
       </NavLink>
-      <a
-        href="javascript:void(0);"
-        className="nav__a--icon"
-        onClick={iconOnClick}
-      >
+      <a className="nav__a--icon" onClick={iconOnClick}>
         +
       </a>
     </nav>
