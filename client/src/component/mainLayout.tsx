@@ -1,10 +1,15 @@
 import { Outlet } from "react-router-dom";
-import "../App.css";
+import Footer from "./footer";
+import Header from "./header";
 
 const MainLayout: React.FC = () => (
-  <main className="App">
-    <Outlet />
-  </main>
+  <div className="App">
+    <Header />
+    <main>
+      <Outlet />
+    </main>
+    <Footer />
+  </div>
 );
 
 export default MainLayout;
