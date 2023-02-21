@@ -1,6 +1,9 @@
+import { useState } from "react";
 import Subject from "./subject";
 
 const Confession: React.FC = () => {
+  const [subject, setSubject] = useState<string>("");
+
   return (
     <>
       <p className="confession__p">
@@ -12,7 +15,7 @@ const Confession: React.FC = () => {
         welcome to contact us here too. Up to you!
       </p>
       <form className="form">
-        <Subject />
+        <Subject subject={subject} />
       </form>
     </>
   );
