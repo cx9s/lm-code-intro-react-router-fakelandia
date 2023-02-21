@@ -15,7 +15,7 @@ const Confession: React.FC = () => {
         welcome to contact us here too. Up to you!
       </p>
       <form className="form">
-        <Subject subject={subject} />
+        <Subject subject={subject} setSubject={setSubject} />
       </form>
     </>
   );

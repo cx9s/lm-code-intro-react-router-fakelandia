@@ -1,8 +1,9 @@
 interface SubjectProps {
   subject: string;
+  setSubject: (subject: string) => void;
 }
 
-const Subject: React.FC<SubjectProps> = ({ subject }) => {
+const Subject: React.FC<SubjectProps> = ({ subject, setSubject }) => {
   return (
     <div>
       <label htmlFor="subject">Subject: </label>
@@ -11,6 +12,9 @@ const Subject: React.FC<SubjectProps> = ({ subject }) => {
         type="text"
         placeholder="Please input subject"
         value={subject}
+        onChange={(e) => {
+          setSubject(e.target.value);
+        }}
       />
     </div>
   );
