@@ -125,3 +125,38 @@ footer {
     text-align: left;
   }
 }
+
+/* misList */
+
+.misSelect {
+  width: 10%;
+  min-width: 100px;
+  margin: 1rem auto 0 auto;
+}
+
+.misList {
+  margin: 1rem auto;
+  width: 80%;
+}
+
+.misList__thead {
+  height: 4rem;
+  background-color: #7fbd9b;
+}
+
+.misList__tr--even {
+  background-color: #eee;
+}
+
+.misList__tr--odd {
+  background-color: #ccc;
+}
+
+.misList__td {
+  height: 4rem;
+  width: 25%;
+}
+
+.misList__punish {
+  vertical-align: middle;
+}

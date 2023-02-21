@@ -7,9 +7,9 @@ const MisList: React.FC<{ misList: MisdemeanourDataType[] }> = ({
   misList,
 }) => {
   return (
-    <table>
+    <table className="misList">
       <thead>
-        <tr>
+        <tr className="misList__thead">
           <th>Citizen ID</th>
           <th>Date</th>
           <th>Misdemeanour</th>
@@ -17,17 +17,24 @@ const MisList: React.FC<{ misList: MisdemeanourDataType[] }> = ({
         </tr>
       </thead>
       <tbody>
-        {misList.map((mis) => {
-          const iconUrl = `https://picsum.photos/50/50?${mis.citizenId}`;
+        {misList.map((mis, index) => {
+          const punishUrl = `https://picsum.photos/50/50?${mis.citizenId}`;
           return (
-            <tr key={mis.citizenId}>
-              <td>{mis.citizenId}</td>
-              <td>{mis.date}</td>
-              <td>
+            <tr
+              className={
+                index % 2 === 0
+                  ? "misList__tr misList__tr--even"
+                  : "misList__tr misList__tr--odd"
+              }
+              key={mis.citizenId}
+            >
+              <td className="misList__td">{mis.citizenId}</td>
+              <td className="misList__td">{mis.date}</td>
+              <td className="misList__td">
                 {mis.misdemeanour} {MisdemeanourIcons[mis.misdemeanour]}
               </td>
-              <td>
-                <img src={iconUrl} />
+              <td className="misList__td">
+                <img className="misList__punish" src={punishUrl} />
               </td>
             </tr>
           );
