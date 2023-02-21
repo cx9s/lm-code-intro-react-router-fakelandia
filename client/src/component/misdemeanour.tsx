@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
-import { MisdemeanourDataType } from "../../types/misdemeanours.types";
+import {
+  MisdemeanourKind,
+  MisdemeanourDataType,
+} from "../../types/misdemeanours.types";
 import MisList from "./misList";
+import MisSelect from "./misSelect";
 
 const Misdemeanour: React.FC = () => {
   const fetchUrl = "http://localhost:8080/api/misdemeanours/10";
+  const [misSelect, setMisSelect] = useState<MisdemeanourKind | "">("");
   const [misdemeanours, setMisdemeanour] = useState<MisdemeanourDataType[]>([]);
 
   const fetchMisdemeanours = async (url: string) => {
@@ -22,7 +27,12 @@ const Misdemeanour: React.FC = () => {
 
   return (
     <div>
-      <MisList misList={misdemeanours} />
+      <MisSelect setMis={setMisSelect} />
+      <MisList
+        misList={misdemeanours.filter((mis) =>
+          mis.misdemeanour.includes(misSelect)
+        )}
+      />
     </div>
   );
 };
