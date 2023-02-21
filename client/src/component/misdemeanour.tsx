@@ -26,14 +26,14 @@ const Misdemeanour: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <MisSelect setMis={setMisSelect} />
       <MisList
         misList={misdemeanours.filter((mis) =>
           mis.misdemeanour.includes(misSelect)
         )}
       />
-    </div>
+    </>
   );
 };
 
