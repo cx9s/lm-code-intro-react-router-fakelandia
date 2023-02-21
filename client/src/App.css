@@ -13,6 +13,8 @@
 }
 
 main {
+  width: 80%;
+  margin: auto;
   flex: 1 0 auto;
 }
 
@@ -129,14 +131,14 @@ footer {
 /* misList */
 
 .misSelect {
-  width: 10%;
+  width: 20%;
   min-width: 100px;
   margin: 1rem auto 0 auto;
 }
 
 .misList {
   margin: 1rem auto;
-  width: 80%;
+  width: 100%;
 }
 
 .misList__thead {
@@ -159,4 +161,14 @@ footer {
 
 .misList__punish {
   vertical-align: middle;
+}
+
+/* confession */
+.confession__p {
+  text-align: left;
+}
+
+.form {
+  padding-top: 1rem;
+  text-align: left;
 }
