@@ -168,7 +168,20 @@ footer {
   text-align: left;
 }
 
-.form {
+.confessionForm {
   padding-top: 1rem;
   text-align: left;
+}
+
+.confessionForm_item {
+  margin: 2rem 0 1rem 0;
+}
+
+.error {
+  padding-left: 1rem;
+  color: red;
+}
+
+.error__p {
+  margin: 0.3rem 0;
 }
