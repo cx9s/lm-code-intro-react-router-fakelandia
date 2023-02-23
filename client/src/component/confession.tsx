@@ -8,6 +8,7 @@ import {
   validateDetails,
   validateReason,
   validateSubject,
+  validateAll,
 } from "./confessionForm/validateForm";
 import { SelectInput } from "./confessionForm/selectInput";
 
@@ -19,6 +20,7 @@ const defaultFormData: ConfessionFormData = {
 
 const Confession: React.FC = () => {
   const [formData, setFormData] = useState<ConfessionFormData>(defaultFormData);
+  const [submittable, setSubmittable] = useState<boolean>(true);
 
   const onChangeHandler: ConfessionFormChangeHandler = <
     TKey extends keyof ConfessionFormData
@@ -26,13 +28,15 @@ const Confession: React.FC = () => {
     value: ConfessionFormData[TKey],
     name: TKey
   ) => {
-    setSubmitted(false);
     const newData: ConfessionFormData = { ...formData };
     newData[name] = value;
     setFormData(newData);
+    setSubmittable(validateAll(newData));
   };
 
-  const [submitted, setSubmitted] = useState(false);
+  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
 
   return (
     <>
@@ -44,7 +48,12 @@ const Confession: React.FC = () => {
         However, if you're just having a hard day and need to vent then you're
         welcome to contact us here too. Up to you!
       </p>
-      <form className="confessionForm">
+      <form
+        className="confessionForm"
+        onSubmit={(e) => {
+          submitHandler(e);
+        }}
+      >
         <TextInput
           id="subject"
           type="text"
@@ -63,11 +72,12 @@ const Confession: React.FC = () => {
           validate={validateReason}
           onChangeHandler={onChangeHandler}
           options={[
-            { value: "NOT_SELECTED", display: "-" },
+            { value: "NOT_SELECTED", display: "-Select one reason-" },
             { value: "rudeness", display: "Mild Public Rudeness" },
             { value: "vegetables", display: "Speaking in a Lift" },
             { value: "lift", display: "Not Eating Your Vegetables" },
             { value: "united", display: "Supporting Manchester United" },
+            { value: "just-talk", display: "I just want to talk" },
           ]}
         />
         <TextInput
@@ -80,6 +90,11 @@ const Confession: React.FC = () => {
           validate={validateDetails}
           onChangeHandler={onChangeHandler}
         />
+        <div className="confessionForm_item">
+          <button type="submit" disabled={submittable}>
+            Confess
+          </button>
+        </div>
       </form>
     </>
   );

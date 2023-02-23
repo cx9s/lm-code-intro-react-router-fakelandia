@@ -1,3 +1,4 @@
+import { ConfessionFormData } from "./confessionForm.types";
 import {
   SUBJECT_MIN_LENGTH,
   SUBJECT_MAX_LENGTH,
@@ -10,6 +11,10 @@ import {
   mustBeSelected,
   ValidationFunction,
 } from "./validationRules";
+
+const apply = (rules: ValidationFunction[], value: string) => {
+  return rules.map((r) => r(value)).filter(Boolean) as string[];
+};
 
 export const validateSubject: (value: string) => string[] = (value) => {
   const rules = [minLength(SUBJECT_MIN_LENGTH), maxLength(SUBJECT_MAX_LENGTH)];
@@ -29,6 +34,12 @@ export const validateDetails: (value: string) => string[] = (value) => {
   return apply(rules, value);
 };
 
-const apply = (rules: ValidationFunction[], value: string) => {
-  return rules.map((r) => r(value)).filter(Boolean) as string[];
+export const validateAll: (formData: ConfessionFormData) => boolean = (
+  formData
+) => {
+  const subject = validateSubject(formData.subject).length === 0;
+  const reason = validateReason(formData.reason).length === 0;
+  const details = validateDetails(formData.details).length === 0;
+
+  return !(subject && reason && details);
 };

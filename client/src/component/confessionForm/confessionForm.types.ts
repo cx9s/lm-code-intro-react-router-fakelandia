@@ -1,6 +1,6 @@
 import { MisdemeanourKind } from "../../../types/misdemeanours.types";
 
-export type ReasonSelect = "NOT_SELECTED" | MisdemeanourKind;
+export type ReasonSelect = "NOT_SELECTED" | MisdemeanourKind | "just-talk";
 
 export type ConfessionFormData = {
   subject: string;

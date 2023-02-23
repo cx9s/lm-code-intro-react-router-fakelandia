@@ -8,7 +8,6 @@ import {
 
 type Option = { display: string; value: ReasonSelect };
 
-// very similar to the <TextInput> props - see comments there.
 export interface SelectProps {
   id: string;
   name: keyof ConfessionFormData;
