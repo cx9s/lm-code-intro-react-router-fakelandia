@@ -11,6 +11,8 @@ import {
   validateAll,
 } from "./confessionForm/validateForm";
 import { SelectInput } from "./confessionForm/selectInput";
+import FormHead from "./confessionForm/formHead";
+import { useNavigate } from "react-router-dom";
 
 const defaultFormData: ConfessionFormData = {
   subject: "",
@@ -21,6 +23,9 @@ const defaultFormData: ConfessionFormData = {
 const Confession: React.FC = () => {
   const [formData, setFormData] = useState<ConfessionFormData>(defaultFormData);
   const [submittable, setSubmittable] = useState<boolean>(true);
+  const [responseMessage, setResponseMessage] = useState<string>("");
+
+  const navigate = useNavigate();
 
   const onChangeHandler: ConfessionFormChangeHandler = <
     TKey extends keyof ConfessionFormData
@@ -34,20 +39,34 @@ const Confession: React.FC = () => {
     setSubmittable(validateAll(newData));
   };
 
-  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:8080/api/confess", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const { success, justTalked, message } = await response.json();
+      if (!success) {
+        setResponseMessage(message);
+      } else if (success && justTalked) {
+        setResponseMessage(message);
+      } else if (success && !justTalked) {
+        console.log(`${success}, ${justTalked}, ${message}`);
+        navigate(`/misdemeanour/${formData.reason}`);
+      }
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
     <>
-      <p className="confession__p">
-        It's very difficult to catch people committing misdemeanours, so we
-        appreciate it when citizens confess to us directly.
-      </p>
-      <p className="confession__p">
-        However, if you're just having a hard day and need to vent then you're
-        welcome to contact us here too. Up to you!
-      </p>
+      <FormHead />
+      {responseMessage !== "" && <h2 className="message">{responseMessage}</h2>}
       <form
         className="confessionForm"
         onSubmit={(e) => {
