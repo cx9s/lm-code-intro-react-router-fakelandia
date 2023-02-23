@@ -10,7 +10,7 @@ const Router: React.FC = () => (
     <Route path="/" element={<MainLayout />}>
       <Route index element={<Home />} />
       <Route path="confession" element={<Confession />} />
-      <Route path="misdemeanour" element={<Misdemeanour />} />
+      <Route path="misdemeanour?/:misdemeanour" element={<Misdemeanour />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   </Routes>

@@ -169,7 +169,6 @@ footer {
 }
 
 .confessionForm {
-  padding-top: 1rem;
   text-align: left;
 }
 
@@ -184,4 +183,8 @@ footer {
 
 .error__p {
   margin: 0.3rem 0;
+}
+
+.message {
+  color: green;
 }
