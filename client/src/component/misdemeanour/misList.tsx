@@ -1,7 +1,4 @@
-import {
-  MisdemeanourDataType,
-  MisdemeanourIcons,
-} from "../../types/misdemeanours.types";
+import { MisdemeanourDataType, MisdemeanourIcons } from "./misdemeanours.types";
 
 const MisList: React.FC<{ misList: MisdemeanourDataType[] }> = ({
   misList,

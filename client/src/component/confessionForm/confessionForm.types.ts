@@ -1,4 +1,4 @@
-import { MisdemeanourKind } from "../../../types/misdemeanours.types";
+import { MisdemeanourKind } from "../misdemeanour/misdemeanours.types";
 
 export type ReasonSelect = "NOT_SELECTED" | MisdemeanourKind | "just-talk";
 

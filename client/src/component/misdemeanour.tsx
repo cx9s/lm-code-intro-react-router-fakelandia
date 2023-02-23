@@ -2,9 +2,9 @@ import { useEffect, useState, useContext } from "react";
 import {
   MisdemeanourKind,
   MisdemeanourDataType,
-} from "../../types/misdemeanours.types";
-import MisList from "./misList";
-import MisSelect from "./misSelect";
+} from "./misdemeanour/misdemeanours.types";
+import MisList from "./misdemeanour/misList";
+import MisSelect from "./misdemeanour/misSelect";
 import { ConfessionContext, ConfessionContextType } from "./confessionContext";
 
 const Misdemeanour: React.FC = () => {

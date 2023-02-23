@@ -14,7 +14,7 @@ import { SelectInput } from "./confessionForm/selectInput";
 import FormHead from "./confessionForm/formHead";
 import { useNavigate } from "react-router-dom";
 import { ConfessionContext, ConfessionContextType } from "./confessionContext";
-import { MisdemeanourKind } from "../../types/misdemeanours.types";
+import { MisdemeanourKind } from "./misdemeanour/misdemeanours.types";
 
 const defaultFormData: ConfessionFormData = {
   subject: "",

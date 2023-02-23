@@ -1,4 +1,4 @@
-import { MisdemeanourKind } from "../../types/misdemeanours.types";
+import { MisdemeanourKind } from "./misdemeanours.types";
 
 const MisSelect: React.FC<{
   setMis: (value: MisdemeanourKind | "") => void;

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import {
   MisdemeanourDataType,
   MisdemeanourKind,
-} from "../../types/misdemeanours.types";
+} from "./misdemeanour/misdemeanours.types";
 
 export interface ConfessionContextType {
   confessions: MisdemeanourDataType[];
