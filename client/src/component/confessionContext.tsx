@@ -28,12 +28,12 @@ const ConfessionProvider: React.FC<ConfessionProviderProps> = ({
   const navigate = useNavigate();
 
   const confess = async (mis: MisdemeanourKind) => {
-    // construct a fake data
+    // construct a fake data add into confessions
     try {
       const response = await fetch(`http://localhost:8080/api/misdemeanours/1`);
       const json = await response.json();
       json.misdemeanours[0].misdemeanour = mis;
-      await setconfessions(json.misdemeanours);
+      await setconfessions([...confessions, ...json.misdemeanours]);
       navigate(`/misdemeanour`);
     } catch (e) {
       console.error(e);
