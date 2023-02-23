@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { TextInput } from "./confessionForm/textInput";
 import {
   ConfessionFormChangeHandler,
@@ -13,6 +13,8 @@ import {
 import { SelectInput } from "./confessionForm/selectInput";
 import FormHead from "./confessionForm/formHead";
 import { useNavigate } from "react-router-dom";
+import { ConfessionContext, ConfessionContextType } from "./confessionContext";
+import { MisdemeanourKind } from "../../types/misdemeanours.types";
 
 const defaultFormData: ConfessionFormData = {
   subject: "",
@@ -24,6 +26,8 @@ const Confession: React.FC = () => {
   const [formData, setFormData] = useState<ConfessionFormData>(defaultFormData);
   const [submittable, setSubmittable] = useState<boolean>(true);
   const [responseMessage, setResponseMessage] = useState<string>("");
+
+  const { confess } = useContext(ConfessionContext) as ConfessionContextType;
 
   const navigate = useNavigate();
 
@@ -55,8 +59,7 @@ const Confession: React.FC = () => {
       } else if (success && justTalked) {
         setResponseMessage(message);
       } else if (success && !justTalked) {
-        console.log(`${success}, ${justTalked}, ${message}`);
-        navigate(`/misdemeanour/${formData.reason}`);
+        confess(formData.reason as MisdemeanourKind);
       }
     } catch (e) {
       console.error(e);
@@ -93,8 +96,8 @@ const Confession: React.FC = () => {
           options={[
             { value: "NOT_SELECTED", display: "-Select one reason-" },
             { value: "rudeness", display: "Mild Public Rudeness" },
-            { value: "vegetables", display: "Speaking in a Lift" },
-            { value: "lift", display: "Not Eating Your Vegetables" },
+            { value: "lift", display: "Speaking in a Lift" },
+            { value: "vegetables", display: "Not Eating Your Vegetables" },
             { value: "united", display: "Supporting Manchester United" },
             { value: "just-talk", display: "I just want to talk" },
           ]}

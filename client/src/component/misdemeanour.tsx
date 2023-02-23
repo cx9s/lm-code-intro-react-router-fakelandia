@@ -1,39 +1,37 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
 import {
   MisdemeanourKind,
   MisdemeanourDataType,
-  MISDEMEANOURS,
 } from "../../types/misdemeanours.types";
 import MisList from "./misList";
 import MisSelect from "./misSelect";
+import { ConfessionContext, ConfessionContextType } from "./confessionContext";
 
 const Misdemeanour: React.FC = () => {
-  const fetchUrl = "http://localhost:8080/api/misdemeanours/";
+  const fetchUrl = "http://localhost:8080/api/misdemeanours/10";
   const [misSelect, setMisSelect] = useState<MisdemeanourKind | "">("");
   const [misdemeanours, setMisdemeanour] = useState<MisdemeanourDataType[]>([]);
 
-  const param = useParams().misdemeanour as MisdemeanourKind;
+  const { confessions } = useContext(
+    ConfessionContext
+  ) as ConfessionContextType;
 
-  const fetchMisdemeanours = async (number: number) => {
-    try {
-      if (MISDEMEANOURS.includes(param)) {
-        const response = await fetch(`${fetchUrl}1`);
-        const json = await response.json();
-        json.misdemeanours[0].misdemeanour = param;
-        setMisdemeanour(json.misdemeanours);
-      } else {
-        const response = await fetch(fetchUrl + number);
+  const fetchMisdemeanours = async (url: string) => {
+    if (confessions.length !== 0) {
+      setMisdemeanour(confessions);
+    } else {
+      try {
+        const response = await fetch(url);
         const json = await response.json();
         setMisdemeanour(json.misdemeanours);
+      } catch (e) {
+        console.error(e);
       }
-    } catch (e) {
-      console.error(e);
     }
   };
 
   useEffect(() => {
-    fetchMisdemeanours(10);
+    fetchMisdemeanours(fetchUrl);
   }, []);
 
   return (

@@ -17,7 +17,7 @@ export type MisdemeanourDataType = {
 
 export const MisdemeanourIcons = {
   rudeness: "🤪",
-  vegetables: "🗣",
-  lift: "🥗",
+  lift: "🗣",
+  vegetables: "🥗",
   united: "😈",
 };
