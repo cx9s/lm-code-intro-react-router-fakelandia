@@ -161,7 +161,8 @@ footer {
 
 .misList__thead {
   height: 4rem;
-  background-color: #7fbd9b;
+  color: var(--white);
+  background-color: var(--united_red);
 }
 
 .misList__tr--even {
@@ -170,6 +171,10 @@ footer {
 
 .misList__tr--odd {
   background-color: #ccc;
+}
+
+.misList__tr--self {
+  background-color: var(--city_blue);
 }
 
 .misList__td {

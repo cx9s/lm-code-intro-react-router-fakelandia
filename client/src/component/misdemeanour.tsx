@@ -18,18 +18,14 @@ const Misdemeanour: React.FC = () => {
   ) as ConfessionContextType;
 
   const fetchMisdemeanours = async (url: string) => {
-    if (confessions.length !== 0) {
-      setMisdemeanour(confessions);
+    try {
+      const response = await fetch(url);
+      const json = await response.json();
+      const newMis = [...confessions, ...json.misdemeanours];
+      setMisdemeanour(newMis);
       setIsLoading(false);
-    } else {
-      try {
-        const response = await fetch(url);
-        const json = await response.json();
-        setMisdemeanour(json.misdemeanours);
-        setIsLoading(false);
-      } catch (e) {
-        console.error(e);
-      }
+    } catch (e) {
+      console.error(e);
     }
   };
 

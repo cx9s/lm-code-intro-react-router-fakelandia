@@ -20,7 +20,9 @@ const MisList: React.FC<{ misList: MisdemeanourDataType[] }> = ({
             <tr
               key={mis.citizenId}
               className={
-                index % 2 === 0
+                mis.subject
+                  ? "misList__tr--self"
+                  : index % 2 === 0
                   ? "misList__tr misList__tr--even"
                   : "misList__tr misList__tr--odd"
               }
