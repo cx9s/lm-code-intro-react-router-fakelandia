@@ -20,6 +20,7 @@ const Misdemeanour: React.FC = () => {
   const fetchMisdemeanours = async (url: string) => {
     if (confessions.length !== 0) {
       setMisdemeanour(confessions);
+      setIsLoading(false);
     } else {
       try {
         const response = await fetch(url);

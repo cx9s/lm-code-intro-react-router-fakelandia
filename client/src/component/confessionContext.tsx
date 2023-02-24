@@ -4,10 +4,11 @@ import {
   MisdemeanourDataType,
   MisdemeanourKind,
 } from "./misdemeanour/misdemeanours.types";
+import { ConfessionFormData } from "./confessionForm/confessionForm.types";
 
 export interface ConfessionContextType {
   confessions: MisdemeanourDataType[];
-  confess: (mis: MisdemeanourKind) => void;
+  confess: (confession: ConfessionFormData) => void;
 }
 
 interface ConfessionProviderProps {
@@ -27,13 +28,15 @@ const ConfessionProvider: React.FC<ConfessionProviderProps> = ({
   const [confessions, setconfessions] = useState<MisdemeanourDataType[]>([]);
   const navigate = useNavigate();
 
-  const confess = async (mis: MisdemeanourKind) => {
+  const confess = async (confession: ConfessionFormData) => {
     // construct a fake data add into confessions
     try {
       const response = await fetch(`http://localhost:8080/api/misdemeanours/1`);
       const json = await response.json();
-      json.misdemeanours[0].misdemeanour = mis;
-      await setconfessions([...confessions, ...json.misdemeanours]);
+      json.misdemeanours[0].subject = confession.subject;
+      json.misdemeanours[0].misdemeanour = confession.reason;
+      json.misdemeanours[0].details = confession.details;
+      await setconfessions([...confessions, json.misdemeanours[0]]);
       navigate(`/misdemeanour`);
     } catch (e) {
       console.error(e);

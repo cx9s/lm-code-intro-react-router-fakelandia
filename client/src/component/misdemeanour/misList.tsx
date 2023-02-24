@@ -18,17 +18,35 @@ const MisList: React.FC<{ misList: MisdemeanourDataType[] }> = ({
           const punishUrl = `https://picsum.photos/50/50?${mis.citizenId}`;
           return (
             <tr
+              key={mis.citizenId}
               className={
                 index % 2 === 0
                   ? "misList__tr misList__tr--even"
                   : "misList__tr misList__tr--odd"
               }
-              key={mis.citizenId}
             >
               <td className="misList__td">{mis.citizenId}</td>
               <td className="misList__td">{mis.date}</td>
               <td className="misList__td">
-                {mis.misdemeanour} {MisdemeanourIcons[mis.misdemeanour]}
+                {mis.subject ? (
+                  <details>
+                    <summary>
+                      {mis.misdemeanour} {MisdemeanourIcons[mis.misdemeanour]}
+                    </summary>
+                    <p className="misList__details">
+                      <strong>Subject: </strong>
+                      {mis.subject}
+                    </p>
+                    <p className="misList__details">
+                      <strong>Details: </strong>
+                      {mis.details}
+                    </p>
+                  </details>
+                ) : (
+                  <>
+                    {mis.misdemeanour} {MisdemeanourIcons[mis.misdemeanour]}
+                  </>
+                )}
               </td>
               <td className="misList__td">
                 <img className="misList__punish" src={punishUrl} />

@@ -12,7 +12,6 @@ import {
 } from "./confessionForm/validateForm";
 import { SelectInput } from "./confessionForm/selectInput";
 import FormHead from "./confessionForm/formHead";
-import { useNavigate } from "react-router-dom";
 import { ConfessionContext, ConfessionContextType } from "./confessionContext";
 import { MisdemeanourKind } from "./misdemeanour/misdemeanours.types";
 
@@ -28,8 +27,6 @@ const Confession: React.FC = () => {
   const [responseMessage, setResponseMessage] = useState<string>("");
 
   const { confess } = useContext(ConfessionContext) as ConfessionContextType;
-
-  const navigate = useNavigate();
 
   const onChangeHandler: ConfessionFormChangeHandler = <
     TKey extends keyof ConfessionFormData
@@ -59,7 +56,7 @@ const Confession: React.FC = () => {
       } else if (success && justTalked) {
         setResponseMessage(message);
       } else if (success && !justTalked) {
-        confess(formData.reason as MisdemeanourKind);
+        confess(formData);
       }
     } catch (e) {
       console.error(e);
