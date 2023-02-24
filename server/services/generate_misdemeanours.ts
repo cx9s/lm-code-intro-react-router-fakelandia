@@ -8,7 +8,7 @@ export async function generateMisdemeanours(
   number: number
 ): Promise<Array<Misdemeanour>> {
   // pretend this is a slow API we're calling, wait 0.75s
-  await sleep(3000);
+  await sleep(4000);
 
   let amount = number ?? 50;
 

@@ -1,3 +1,12 @@
+:root {
+  --united_red: #c70101;
+  --black: #1a1a1a;
+  --white: #fff;
+  --city_blue: #98c5e9;
+  --wolver_yellow: #fc891c;
+  --norwich_green: #008842;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -8,12 +17,12 @@
 .App {
   display: flex;
   flex-direction: column;
-  min-width: 320px;
+  min-width: 440px;
   min-height: 100vh;
 }
 
 main {
-  width: 80%;
+  width: 90%;
   margin: auto;
   flex: 1 0 auto;
 }
@@ -26,6 +35,15 @@ header,
 main,
 footer {
   flex-shrink: 0;
+}
+
+footer {
+  height: 2rem;
+  line-height: 2rem;
+  background-color: var(--black);
+  color: var(--white);
+  font-size: 12px;
+  border-top: 1px solid rgba(217, 217, 217, 0.3);
 }
 
 .logo {
@@ -67,13 +85,13 @@ footer {
 /* nav */
 .nav {
   overflow: hidden;
-  background-color: #333;
+  background-color: var(--black);
 }
 
 .nav__a {
   float: left;
   display: block;
-  color: #f2f2f2;
+  color: var(--white);
   text-align: center;
   padding: 1rem;
   text-decoration: none;
@@ -86,14 +104,14 @@ footer {
 }
 
 .nav__a--active {
-  background-color: #04aa6d;
-  color: white;
+  background-color: #c70101;
+  color: var(--white);
 }
 
 .nav__a--icon {
   float: left;
   display: block;
-  color: #f2f2f2;
+  color: var(--white);
   text-align: center;
   padding: 1rem;
   text-decoration: none;
@@ -190,14 +208,14 @@ footer {
 }
 
 /* loading */
+.isLoading {
+  padding-top: 100px;
+}
+
 .container {
-  position: absolute;
+  position: relative;
   width: 200px;
   height: 200px;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
   margin: auto;
 }
 
@@ -211,7 +229,7 @@ footer {
 }
 
 .item-1 {
-  background-color: #fac24c;
+  background-color: var(--wolver_yellow);
   top: 0;
   left: 0;
   z-index: 1;
@@ -219,14 +237,14 @@ footer {
 }
 
 .item-2 {
-  background-color: #7a45e5;
+  background-color: var(--city_blue);
   top: 0;
   right: 0;
   animation: item-2_move 2.5s cubic-bezier(0.6, 0.01, 0.4, 1) infinite;
 }
 
 .item-3 {
-  background-color: #1b91f7;
+  background-color: var(--norwich_green);
   bottom: 0;
   right: 0;
   z-index: 1;
@@ -234,7 +252,7 @@ footer {
 }
 
 .item-4 {
-  background-color: #c70101;
+  background-color: var(--united_red);
   bottom: 0;
   left: 0;
   animation: item-4_move 2.5s cubic-bezier(0.6, 0.01, 0.4, 1) infinite;
