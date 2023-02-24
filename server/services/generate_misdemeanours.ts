@@ -1,42 +1,42 @@
 import {
-	Misdemeanour,
-	MisdemeanourKind,
-	MISDEMEANOURS,
-} from '../types/misdemeanours.types';
+  Misdemeanour,
+  MisdemeanourKind,
+  MISDEMEANOURS,
+} from "../types/misdemeanours.types";
 
 export async function generateMisdemeanours(
-	number: number
+  number: number
 ): Promise<Array<Misdemeanour>> {
-	// pretend this is a slow API we're calling, wait 0.75s
-	await sleep(750);
+  // pretend this is a slow API we're calling, wait 0.75s
+  await sleep(3000);
 
-	let amount = number ?? 50;
+  let amount = number ?? 50;
 
-	const misdemeanours: Misdemeanour[] = [];
+  const misdemeanours: Misdemeanour[] = [];
 
-	for (let i = 0; i < amount; i++) {
-		misdemeanours.push({
-			citizenId: Math.floor(i + rand(37) * rand(967)),
-			misdemeanour: choose<MisdemeanourKind>([...MISDEMEANOURS]),
-			date: new Date().toLocaleDateString(),
-		});
-	}
+  for (let i = 0; i < amount; i++) {
+    misdemeanours.push({
+      citizenId: Math.floor(i + rand(37) * rand(967)),
+      misdemeanour: choose<MisdemeanourKind>([...MISDEMEANOURS]),
+      date: new Date().toLocaleDateString(),
+    });
+  }
 
-	return misdemeanours;
+  return misdemeanours;
 }
 
 function rand(x: number): number {
-	return Math.random() * x;
+  return Math.random() * x;
 }
 
 /// take just one T from an array of T
 function choose<T>(arr: Array<T>): T {
-	if (!arr) arr = [];
-	return arr[Math.floor(Math.random() * arr.length)];
+  if (!arr) arr = [];
+  return arr[Math.floor(Math.random() * arr.length)];
 }
 
 // In the real world, you wouldn't want to fake a 'sleep' like this, but for our purposes of faking an API
 // this quick-and-dirty solution will do the job.
 const sleep = async (milliseconds: number) => {
-	return new Promise((resolve) => setTimeout(resolve, milliseconds));
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
 };
