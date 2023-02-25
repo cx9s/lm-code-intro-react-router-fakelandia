@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  MisdemeanourDataType,
-  MisdemeanourKind,
-} from "./misdemeanour/misdemeanours.types";
+import { MisdemeanourDataType } from "./misdemeanour/misdemeanours.types";
 import { ConfessionFormData } from "./confessionForm/confessionForm.types";
 
 export interface ConfessionContextType {
