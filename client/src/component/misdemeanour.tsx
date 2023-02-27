@@ -6,9 +6,9 @@ import {
 import MisList from "./misdemeanour/misList";
 import MisSelect from "./misdemeanour/misSelect";
 import { ConfessionContext, ConfessionContextType } from "./confessionContext";
+import { fetchMisdemeanours } from "./misdemeanour/fetchMisdemeanours";
 
 const Misdemeanour: React.FC = () => {
-  const fetchUrl = "http://localhost:8080/api/misdemeanours/10";
   const [misSelect, setMisSelect] = useState<MisdemeanourKind | "">("");
   const [misdemeanours, setMisdemeanour] = useState<MisdemeanourDataType[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -17,11 +17,12 @@ const Misdemeanour: React.FC = () => {
     ConfessionContext
   ) as ConfessionContextType;
 
-  const fetchMisdemeanours = async (url: string) => {
+  const getMisdemeanours = async () => {
     try {
-      const response = await fetch(url);
-      const json = await response.json();
-      const newMis = [...confessions, ...json.misdemeanours];
+      const gotMis = await fetchMisdemeanours(
+        "http://localhost:8080/api/misdemeanours/10"
+      );
+      const newMis = [...confessions, ...gotMis];
       setMisdemeanour(newMis);
       setIsLoading(false);
     } catch (e) {
@@ -30,7 +31,7 @@ const Misdemeanour: React.FC = () => {
   };
 
   useEffect(() => {
-    fetchMisdemeanours(fetchUrl);
+    getMisdemeanours();
   }, []);
 
   return (
