@@ -152,15 +152,15 @@ footer {
 }
 
 .homeContainer {
-  width: 90%;
-  margin: 0 auto;
   text-align: center;
   display: flex;
   flex-wrap: wrap;
 }
 
+.homeContainer,
 .misContainer,
-.confessionContainer {
+.confessionContainer,
+.notFoundContainer {
   width: 90%;
   margin: 0 auto;
 }
@@ -177,11 +177,11 @@ footer {
   position: absolute;
   margin: 0;
   width: 450px;
-  right: 12%;
-  bottom: 117px;
+  right: 8%;
+  bottom: 114px;
   color: var(--white);
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 2.4rem;
   text-align: right;
 }
 
@@ -278,9 +278,6 @@ footer {
   border: 1px solid #68cdf5;
   text-align: left;
   font-size: 1rem;
-}
-
-.confession__p {
 }
 
 .confessionForm {
@@ -453,4 +450,42 @@ footer {
   75% {
     transform: translate(0, -100px);
   }
+}
+
+/* notFound */
+.notFoundContainer {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px 0;
+}
+
+.notFound__img {
+  width: 60%;
+  min-width: 400px;
+  margin: 0 auto;
+}
+.notFound__text {
+  width: 40%;
+  min-width: 300px;
+  margin: 0 auto;
+}
+.notFound__title {
+  margin: 0 auto;
+  padding-top: 2rem;
+}
+.notFound__p {
+  margin: 3rem 0 1rem 0;
+  font-size: 1.2rem;
+}
+
+.notFound__a {
+  color: var(--norwich_green);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.notFound__a:hover {
+  color: var(--united_red);
+  text-decoration: underline;
 }
