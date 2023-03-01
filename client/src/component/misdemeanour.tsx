@@ -35,7 +35,7 @@ const Misdemeanour: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <div className="misContainer">
       {isLoading && (
         <div className="isLoading">
           <div className="container">
@@ -56,7 +56,7 @@ const Misdemeanour: React.FC = () => {
           />
         </>
       )}
-    </>
+    </div>
   );
 };
 

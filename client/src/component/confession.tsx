@@ -64,7 +64,7 @@ const Confession: React.FC = () => {
   };
 
   return (
-    <>
+    <div className="confessionContainer">
       <FormHead />
       {responseMessage !== "" && <h2 className="message">{responseMessage}</h2>}
       <form
@@ -115,7 +115,7 @@ const Confession: React.FC = () => {
           </button>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 

@@ -17,12 +17,12 @@
 .App {
   display: flex;
   flex-direction: column;
-  min-width: 440px;
+  min-width: 500px;
   min-height: 100vh;
 }
 
 main {
-  width: 90%;
+  width: 100%;
   margin: auto;
   flex: 1 0 auto;
 }
@@ -128,6 +128,10 @@ footer {
     float: right;
     display: block;
   }
+  .nav__a:hover {
+    background-color: #c70101;
+    color: var(--white);
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -144,6 +148,59 @@ footer {
     display: block;
     text-align: left;
   }
+}
+
+.homeContainer {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.misContainer,
+.confessionContainer {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* home */
+
+.homeImage {
+  width: 100%;
+  min-width: 450px;
+  position: relative;
+}
+
+.fakelandia {
+  position: absolute;
+  margin: 0;
+  width: 450px;
+  right: 12%;
+  bottom: 117px;
+  color: var(--white);
+  font-weight: bold;
+  font-size: 2rem;
+  text-align: right;
+}
+
+.confessStats {
+  width: 30%;
+  min-width: 300px;
+  margin: 0 auto;
+}
+
+.confessStats__p {
+  font-weight: bold;
+  font-size: 4rem;
+  margin: 2rem 0 1rem 0;
+}
+
+.misChart {
+  width: 60%;
+  min-width: 450px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 /* misList */
@@ -195,6 +252,7 @@ footer {
 /* confession */
 .confession__p {
   text-align: left;
+  font-size: 1.2rem;
 }
 
 .confessionForm {
