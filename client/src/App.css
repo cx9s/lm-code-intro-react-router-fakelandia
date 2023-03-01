@@ -5,6 +5,7 @@
   --city_blue: #98c5e9;
   --wolver_yellow: #fc891c;
   --norwich_green: #008842;
+  --grey: #666;
 }
 
 #root {
@@ -250,17 +251,80 @@ footer {
 }
 
 /* confession */
-.confession__p {
+.confessionContainer {
+  margin: 40px auto;
+  padding-bottom: 30px;
+  background: var(--white);
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.formHead {
+  background: #ace0f5;
+  padding: 1rem 2rem;
+  margin: 0 0 30px 0;
+  border-radius: 10px 10px 0 0;
+  -webkit-border-radius: 10px 10px 0 0;
+  -moz-border-radius: 10px 10px 0 0;
+  color: var(--black);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+  -webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+  box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+  border: 1px solid #68cdf5;
   text-align: left;
-  font-size: 1.2rem;
+  font-size: 1rem;
+}
+
+.confession__p {
 }
 
 .confessionForm {
+  margin: 30px 30px 0 30px;
   text-align: left;
+  padding: 1rem;
+  background: #f8f8f8;
+  border-radius: 6px;
 }
 
 .confessionForm_item {
-  margin: 2rem 0 1rem 0;
+  margin: 1rem 0 1rem 0;
+}
+
+.confessionForm_item label {
+  display: block;
+  color: var(--grey);
+  margin-bottom: 1rem;
+}
+
+.confessionForm_item input[type="text"],
+.confessionForm_item textarea,
+.confessionForm_item select {
+  display: block;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border: 2px solid #fff;
+  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+  -moz-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+  -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+}
+
+.confessionForm_item textarea {
+  height: 5rem;
+}
+
+.confessionForm_item button {
+  margin-top: 1rem;
 }
 
 .error {
