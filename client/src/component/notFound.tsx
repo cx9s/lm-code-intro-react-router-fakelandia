@@ -1,4 +1,4 @@
-import notFoundImage from "../assets/notFoundImage.jpg";
+// import notFoundImage from "../assets/notFoundImage.jpg";
 import { useNavigate } from "react-router-dom";
 
 const NotFound: React.FC = () => {
@@ -6,7 +6,7 @@ const NotFound: React.FC = () => {
 
   return (
     <div className="notFoundContainer">
-      <img className="notFound__img" src={notFoundImage} />
+      {/* <img className="notFound__img" src={notFoundImage} /> */}
       <div className="notFound__text">
         <h2 className="notFound__title">Are you lost in mountains?</h2>
         <p className="notFound__p">

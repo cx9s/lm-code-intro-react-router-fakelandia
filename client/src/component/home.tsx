@@ -19,12 +19,14 @@ const Home: React.FC = () => {
       const gotMis: MisdemeanourDataType[] = await fetchMisdemeanours(
         "http://localhost:8080/api/misdemeanours/100"
       );
-      for (const key in gotMisKinds) {
-        gotMisKinds[key as MisdemeanourKind] = gotMis.filter(
-          (mis) => mis.misdemeanour === key
-        ).length;
+      if (gotMis) {
+        for (const key in gotMisKinds) {
+          gotMisKinds[key as MisdemeanourKind] = gotMis.filter(
+            (mis) => mis.misdemeanour === key
+          ).length;
+        }
+        setMisKinds(gotMisKinds);
       }
-      setMisKinds(gotMisKinds);
     } catch (e) {
       console.error(e);
     }

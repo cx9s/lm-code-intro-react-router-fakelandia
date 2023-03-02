@@ -7,7 +7,7 @@
     "dev": "vite --open",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "jest"
+    "test": "jest --watch"
   },
   "dependencies": {
     "@types/react-router-dom": "^5.3.3",

@@ -3,6 +3,6 @@ import Home from "./home";
 
 test("Given the Home, When the component is rendered, Then the text should be present", () => {
   render(<Home />);
-  const text = screen.getByText(/Home!/i);
+  const text = screen.getByText(/Confessions today/i);
   expect(text).toBeInTheDocument();
 });
