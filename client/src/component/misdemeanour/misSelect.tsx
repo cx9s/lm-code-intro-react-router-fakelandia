@@ -1,8 +1,10 @@
 import { MisdemeanourKind } from "./misdemeanours.types";
 
-const MisSelect: React.FC<{
+export interface MisSelectProps {
   setMis: (value: MisdemeanourKind | "") => void;
-}> = ({ setMis }) => {
+}
+
+const MisSelect: React.FC<MisSelectProps> = ({ setMis }) => {
   return (
     <select
       className="misSelect"
