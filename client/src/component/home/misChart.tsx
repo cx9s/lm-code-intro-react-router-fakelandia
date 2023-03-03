@@ -25,7 +25,6 @@ const MisChart: React.FC<MisChartProps> = ({
 
   const options = {
     title: `Misdemeanours: ${total}`,
-    // with: 500,
     height: 500,
     colors: ["#fc891c", "#1a1a1a", "#008842", "#c70101"],
   };
