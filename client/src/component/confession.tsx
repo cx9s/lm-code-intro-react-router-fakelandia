@@ -14,6 +14,7 @@ import { SelectInput } from "./confessionForm/selectInput";
 import FormHead from "./confessionForm/formHead";
 import { ConfessionContext, ConfessionContextType } from "./confessionContext";
 import { MisdemeanourKind } from "./misdemeanour/misdemeanours.types";
+import { SELECTOPTIONS } from "./confessionForm/selectOptions";
 
 const defaultFormData: ConfessionFormData = {
   subject: "",
@@ -90,14 +91,7 @@ const Confession: React.FC = () => {
           label="Reason"
           validate={validateReason}
           onChangeHandler={onChangeHandler}
-          options={[
-            { value: "NOT_SELECTED", display: "-Select one reason-" },
-            { value: "rudeness", display: "Mild Public Rudeness" },
-            { value: "lift", display: "Speaking in a Lift" },
-            { value: "vegetables", display: "Not Eating Your Vegetables" },
-            { value: "united", display: "Supporting Manchester United" },
-            { value: "just-talk", display: "I just want to talk" },
-          ]}
+          options={SELECTOPTIONS}
         />
         <TextInput
           id="details"

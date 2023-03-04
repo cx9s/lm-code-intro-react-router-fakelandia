@@ -6,12 +6,13 @@ import {
   ConfessionFormData,
 } from "./confessionForm.types";
 
-type Option = { display: string; value: ReasonSelect };
-
 export interface SelectProps {
   id: string;
   name: keyof ConfessionFormData;
-  options: Option[];
+  options: {
+    value: ReasonSelect;
+    display: string;
+  }[];
   label: string;
   value: string;
   onChangeHandler: ConfessionFormChangeHandler;
