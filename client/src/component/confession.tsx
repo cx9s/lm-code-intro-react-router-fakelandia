@@ -65,7 +65,7 @@ const Confession: React.FC = () => {
   };
 
   return (
-    <div className="confessionContainer">
+    <div data-testid="confessionContainer" className="confessionContainer">
       <FormHead />
       {responseMessage !== "" && <h2 className="message">{responseMessage}</h2>}
       <form
