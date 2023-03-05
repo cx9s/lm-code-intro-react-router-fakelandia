@@ -4,6 +4,6 @@ export const fetchMisdemeanours = async (url: string) => {
     const json = await response.json();
     return json.misdemeanours;
   } catch (e) {
-    // console.error(e);
+    console.error(e);
   }
 };
