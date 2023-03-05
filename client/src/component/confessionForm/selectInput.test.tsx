@@ -4,13 +4,13 @@ import { SelectInput, SelectProps } from "./selectInput";
 import { SELECTOPTIONS } from "./selectOptions";
 
 describe("<SelectInput>", () => {
-  it("renders given required props", () => {
+  it("Given the required props, When the component is rendered, Then the text should be present", () => {
     const requiredProps: SelectProps = {
       id: "reason",
       name: "reason",
       label: "Reason",
       options: SELECTOPTIONS,
-      value: "reason",
+      value: "NOT_SELECTED",
       onChangeHandler: jest.fn(),
       validate: jest.fn(),
     };
@@ -21,92 +21,71 @@ describe("<SelectInput>", () => {
     expect(input).toBeInTheDocument();
   });
 
-  it("renders a list of options", () => {
-    const options = ["4", "Not 4"];
-
+  it("Given the required props, When the component is rendered, Then a list of options should be present", () => {
     const requiredProps: SelectProps = {
-      id: "speciesName",
-      name: "speciesName",
-      label: "Species Name",
-      options: [
-        { value: "4", display: options[0] },
-        { value: "Not 4", display: options[1] },
-      ],
-      value: "",
+      id: "reason",
+      name: "reason",
+      label: "Reason",
+      options: SELECTOPTIONS,
+      value: "NOT_SELECTED",
       onChangeHandler: jest.fn(),
       validate: jest.fn(),
     };
     render(<SelectInput {...requiredProps} />);
 
-    const optionOne = screen.getByText(options[0]);
-    const optionTwo = screen.getByText(options[1]);
+    const firstOptionDisplay = screen.getByText(SELECTOPTIONS[0].display);
+    const secondOptionDisplay = screen.getByText(SELECTOPTIONS[1].display);
 
-    expect(optionOne).toBeInTheDocument();
-    expect(optionTwo).toBeInTheDocument();
+    expect(firstOptionDisplay).toBeInTheDocument();
+    expect(secondOptionDisplay).toBeInTheDocument();
   });
 
-  it("sets the value to a provided value", () => {
-    const options = ["4", "Not 4"];
-
+  it("Given the required props, When the component is rendered, Then the value should be set to a provided value", () => {
     const requiredProps: SelectProps = {
-      id: "speciesName",
-      name: "speciesName",
-      label: "Species Name",
-      options: [
-        { value: "4", display: options[0] },
-        { value: "Not 4", display: options[1] },
-      ],
-      value: "Not 4",
+      id: "reason",
+      name: "reason",
+      label: "Reason",
+      options: SELECTOPTIONS,
+      value: "NOT_SELECTED",
       onChangeHandler: jest.fn(),
       validate: jest.fn(),
     };
     render(<SelectInput {...requiredProps} />);
 
-    // 💡 "combobox" is the correct role for a dropdown/select element
     const input = screen.getByRole("combobox");
 
-    expect(input).toHaveValue("Not 4");
+    expect(input).toHaveValue("NOT_SELECTED");
   });
 
-  it("calls onChange with the correct parameters when a new value is selected", async () => {
-    const options = ["4", "Not 4"];
-
+  it("Given the required props, when a new value is selected, calls onChange with the correct parameters", async () => {
     const mockChangeHandler = jest.fn();
 
     const requiredProps: SelectProps = {
-      id: "speciesName",
-      name: "speciesName",
-      label: "Species Name",
-      options: [
-        { value: "4", display: options[0] },
-        { value: "Not 4", display: options[1] },
-      ],
-      value: "Not 4",
+      id: "reason",
+      name: "reason",
+      label: "Reason",
+      options: SELECTOPTIONS,
+      value: "NOT_SELECTED",
       onChangeHandler: mockChangeHandler,
       validate: jest.fn(),
     };
     render(<SelectInput {...requiredProps} />);
 
-    await user.selectOptions(screen.getByRole("combobox"), "4");
+    await user.selectOptions(screen.getByRole("combobox"), "rudeness");
 
     expect(mockChangeHandler).toHaveBeenCalledTimes(1);
-    expect(mockChangeHandler).toHaveBeenCalledWith("4", "speciesName");
-
-    // 💡⚠️ NB: We can't test that the value actually gets updated here!
-    //           If we write a test like expect(select).toHaveValue('4') it will FAIL ❌
-    //           That's because state is stored in the form, not in the Select
-    //           ✅ The job of the Select is ONLY to call the onChangeHandler with the correct params
+    expect(mockChangeHandler).toHaveBeenCalledWith("rudeness", "reason");
   });
 
-  it("validates the provided value", async () => {
+  it("Given the required props, when a new value is selected, calls validate function with the provided value", async () => {
     const mockValidate = jest.fn();
-    const value = "Not 4";
+    const value = "NOT_SELECTED";
 
     const requiredProps: SelectProps = {
-      id: "speciesName",
-      name: "speciesName",
-      label: "Species Name",
-      options: [],
+      id: "reason",
+      name: "reason",
+      label: "Reason",
+      options: SELECTOPTIONS,
       value: value,
       onChangeHandler: jest.fn(),
       validate: mockValidate,
@@ -117,9 +96,9 @@ describe("<SelectInput>", () => {
     expect(mockValidate).toHaveBeenCalledWith(value);
   });
 
-  it("does not display error messages if select is not touched", async () => {
+  it("Given the required props, when the select is not touched, does not display error messages", async () => {
     const mockValidate = jest.fn();
-    const value = "Not 4";
+    const value = "rudeness";
 
     mockValidate.mockReturnValue([
       "Fake error message",
@@ -127,9 +106,9 @@ describe("<SelectInput>", () => {
     ]);
 
     const requiredProps: SelectProps = {
-      id: "speciesName",
-      name: "speciesName",
-      label: "Species Name",
+      id: "reason",
+      name: "reason",
+      label: "Reason",
       options: [],
       value: value,
       onChangeHandler: jest.fn(),
@@ -144,9 +123,9 @@ describe("<SelectInput>", () => {
     expect(errorTwo).toBeNull();
   });
 
-  it("does display error messages if select has been touched", async () => {
+  it("Given the required props, when the select is touched, does display error messages", async () => {
     const mockValidate = jest.fn();
-    const value = "Not 4";
+    const value = "NOT_SELECTED";
 
     mockValidate.mockReturnValue([
       "Fake error message",
@@ -154,20 +133,17 @@ describe("<SelectInput>", () => {
     ]);
 
     const requiredProps: SelectProps = {
-      id: "speciesName",
-      name: "speciesName",
-      label: "Species Name",
-      options: [
-        { value: "4", display: "4" },
-        { value: "Not 4", display: "Not 4" },
-      ],
+      id: "reason",
+      name: "reason",
+      label: "Reason",
+      options: SELECTOPTIONS,
       value: value,
       onChangeHandler: jest.fn(),
       validate: mockValidate,
     };
     render(<SelectInput {...requiredProps} />);
 
-    await user.selectOptions(screen.getByRole("combobox"), "4");
+    await user.selectOptions(screen.getByRole("combobox"), "rudeness");
 
     const errorOne = screen.queryByText("Fake error message");
     const errorTwo = screen.queryByText("Another fake error message");
